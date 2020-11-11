@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>AngularJS Events</title>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="event">
+    <h2>This is a demonstration of Events</h2>
+    <div ng-controller="eventController1" ng-init="value=0">
+        {{value}}&nbsp;
+        <button ng-click="value=value+1">Increment Number</button>
+        <br>
+        <h4 ng-mouseover="mouseover()" ng-mouseleave="mouseleft()" style="width: fit-content;cursor: pointer">{{text}}</h4>
+        <button ng-click="show()">Toggle Division</button>
+        <div ng-show="showNames"  ng-init="names=[
+        {name:'Budapest',country:'Hungary'},
+        {name:'Tokyo',country:'Japan'},
+        {name:'Mumbai',country:'India'}]">
+            <ul>
+                <li ng-repeat="x in names">
+                    {{ x.name + ', ' + x.country }}
+                </li>
+            </ul>
+        </div>
+        <h3 ng-mousemove="move($event)" style="width: fit-content">Move cursor over this text area</h3>
+        <p>Coordinates: {{x + ',' + y}}</p>
+    </div>
+</div>
+<script>
+    const app = angular.module('event', []);
+    // noinspection JSValidateTypes
+    app.controller('eventController1', function ($scope) {
+        $scope.text = "Hover the cursor over this text";
+        $scope.mouseover = function() {
+            $scope.text = "Cursor is over the textarea";
+        }
+        $scope.mouseleft = function() {
+            $scope.text = "Cursor is not over the textarea";
+        }
+        $scope.showNames = false;
+        $scope.show = function() {
+            $scope.showNames = !$scope.showNames;
+        }
+        $scope.move = function(event_object) {
+            $scope.x = event_object.clientX;
+            $scope.y = event_object.clientY;
+        }
+    });
+</script>
+</body>
+</html>

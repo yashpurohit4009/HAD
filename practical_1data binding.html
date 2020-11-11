@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>AngularJS Data Binding</title>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app=''>
+    <h2>This is a demonstration of Data Binding</h2>
+    <!--suppress HtmlFormInputWithoutLabel -->
+    <!--suppress JSUnresolvedVariable -->
+    <input ng-init="placeholder='Try typing in the text box'" ng-model="binding"><br>
+    <!--suppress JSUnresolvedVariable -->
+    <p ng-bind="binding"></p>
+    <p>{{placeholder}}</p>
+</div>
+</body>
+</html>
